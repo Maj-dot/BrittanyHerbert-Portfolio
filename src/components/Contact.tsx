@@ -1,35 +1,37 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Send } from 'lucide-react';
-import { socialLinks } from '../data/portfolio';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Github, Linkedin, Send } from "lucide-react";
+import { socialLinks } from "../data/portfolio";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = "Name is required";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+      newErrors.email = "Please enter a valid email";
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = "Message is required";
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message must be at least 10 characters';
+      newErrors.message = "Message must be at least 10 characters";
     }
 
     setErrors(newErrors);
@@ -44,26 +46,42 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("https://formspree.io/f/mgonnvpy", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setSubmitStatus('success');
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', message: '' });
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", message: "" });
 
-    setTimeout(() => {
-      setSubmitStatus('idle');
-    }, 3000);
+        setTimeout(() => {
+          setSubmitStatus("idle");
+        }, 3000);
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch  {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
@@ -77,9 +95,12 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Get In Touch
+          </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? Let's connect and build something great together.
+            Have a project in mind or want to collaborate? Let's connect and
+            build something great together.
           </p>
         </motion.div>
 
@@ -94,8 +115,9 @@ const Contact = () => {
               Let's Talk
             </h3>
             <p className="text-gray-600 mb-8">
-              I'm currently available for freelance work and open to discussing new projects,
-              creative ideas, or opportunities to be part of your vision.
+              I'm currently available for freelance work and open to discussing
+              new projects, creative ideas, or opportunities to be part of your
+              vision.
             </p>
 
             <div className="space-y-4">
@@ -144,9 +166,15 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <form onSubmit={handleSubmit} className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white rounded-xl p-8 shadow-sm border border-gray-200"
+            >
               <div className="mb-6">
-                <label htmlFor="name" className="block text-gray-900 font-medium mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-gray-900 font-medium mb-2"
+                >
                   Name
                 </label>
                 <input
@@ -156,7 +184,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all ${
-                    errors.name ? 'border-red-500' : 'border-gray-300'
+                    errors.name ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="Your name"
                 />
@@ -166,7 +194,10 @@ const Contact = () => {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="email" className="block text-gray-900 font-medium mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-gray-900 font-medium mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -176,7 +207,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all ${
-                    errors.email ? 'border-red-500' : 'border-gray-300'
+                    errors.email ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="your.email@example.com"
                 />
@@ -186,7 +217,10 @@ const Contact = () => {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="message" className="block text-gray-900 font-medium mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-gray-900 font-medium mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -196,7 +230,7 @@ const Contact = () => {
                   onChange={handleChange}
                   rows={5}
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all resize-none ${
-                    errors.message ? 'border-red-500' : 'border-gray-300'
+                    errors.message ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="Tell me about your project..."
                 />
@@ -211,7 +245,7 @@ const Contact = () => {
                 className="w-full px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
-                  'Sending...'
+                  "Sending..."
                 ) : (
                   <>
                     Send Message
@@ -220,9 +254,15 @@ const Contact = () => {
                 )}
               </button>
 
-              {submitStatus === 'success' && (
+              {submitStatus === "success" && (
                 <p className="text-green-600 text-center mt-4 font-medium">
                   Message sent successfully!
+                </p>
+              )}
+
+              {submitStatus === "error" && (
+                <p className="text-red-600 text-center mt-4 font-medium">
+                  Something went wrong. Please try again.
                 </p>
               )}
             </form>
