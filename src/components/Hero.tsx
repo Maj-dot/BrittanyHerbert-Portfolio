@@ -28,8 +28,8 @@ const Hero = () => {
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               I build full-stack web applications with a focus on reliability,
-              security, and clean system design. my work centers around React,
-              modern Javascript, and building software that scales and runs
+              security, and clean system design. My work centers around React,
+              modern JavaScript, and building software that scales and runs
               smoothly in production.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -68,15 +68,15 @@ const Hero = () => {
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-gray-900 rounded-full"></span>
-                      Full-Stack Application Development
+                      Expanding Vibexperience into a full event management SaaS platform
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-gray-900 rounded-full"></span>
-                      DevOps & Infrastructure Fundamentals
+                      Building TradeTraffic trading dashboard with React and Supabase
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-gray-900 rounded-full"></span>
-                      Secure Web Architecture
+                      Strengthening Python and security fundamentals for DevOps-focused roles
                     </li>
                   </ul>
                 </div>

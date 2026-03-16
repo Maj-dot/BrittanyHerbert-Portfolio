@@ -6,12 +6,52 @@ import { projects } from '../data/portfolio';
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', 'Frontend', 'Full Stack', 'SaaS', 'Creative'];
+  const categories = ['All', 'Frontend', 'Full Stack', 'Backend', 'Portfolio'];
+
+  const getProjectCategories = (project: {
+    title: string;
+    techStack: string[];
+  }) => {
+    const categories: string[] = [];
+
+    const tech = project.techStack.map((item) => item.toLowerCase());
+
+    const hasFrontend =
+      tech.includes('react') ||
+      tech.includes('javascript') ||
+      tech.includes('typescript') ||
+      tech.includes('html/css') ||
+      tech.includes('tailwind') ||
+      tech.includes('tailwind css') ||
+      tech.includes('ejs');
+
+    const hasBackend =
+      tech.includes('node.js') ||
+      tech.includes('express') ||
+      tech.includes('express.js') ||
+      tech.includes('python') ||
+      tech.includes('django') ||
+      tech.includes('mongodb') ||
+      tech.includes('mongoose') ||
+      tech.includes('postgresql') ||
+      tech.includes('jwt authentication') ||
+      tech.includes('rest apis') ||
+      tech.includes('coingecko api');
+
+    if (hasFrontend) categories.push('Frontend');
+    if (hasBackend) categories.push('Backend');
+    if (hasFrontend && hasBackend) categories.push('Full Stack');
+    if (project.title === 'Developer Portfolio') categories.push('Portfolio');
+
+    return categories;
+  };
 
   const filteredProjects =
     selectedCategory === 'All'
       ? projects
-      : projects.filter((project) => project.category.includes(selectedCategory));
+      : projects.filter((project) =>
+          getProjectCategories(project).includes(selectedCategory)
+        );
 
   const container = {
     hidden: { opacity: 0 },
@@ -38,9 +78,12 @@ const Projects = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Featured Projects
+          </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A collection of my recent work spanning web applications, SaaS platforms, and creative projects.
+            Projects where I design, build, and deploy modern web applications
+            from concept to production.
           </p>
         </motion.div>
 
@@ -83,6 +126,7 @@ const Projects = () => {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {project.title}
                 </h3>
+
                 <p className="text-gray-600 mb-4">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
@@ -97,17 +141,28 @@ const Projects = () => {
                 </div>
 
                 <div className="flex gap-3">
+                  {project.demo && project.demo.startsWith('http') ? (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 font-medium"
+                    >
+                      <ExternalLink size={16} />
+                      Live
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="flex-1 px-4 py-2 bg-gray-300 text-gray-600 rounded-lg flex items-center justify-center gap-2 font-medium cursor-not-allowed"
+                    >
+                      <ExternalLink size={16} />
+                      Demo Soon
+                    </button>
+                  )}
+
                   <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 font-medium"
-                  >
-                    <ExternalLink size={16} />
-                    Live
-                  </a>
-                  <a
-                    href={project.codeUrl}
+                    href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 px-4 py-2 border-2 border-gray-900 text-gray-900 rounded-lg hover:bg-gray-900 hover:text-white transition-colors flex items-center justify-center gap-2 font-medium"

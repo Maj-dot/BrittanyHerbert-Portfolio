@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
 
   const navLinks = [
-    { label: 'Home', id: 'home' },
-    { label: 'Projects', id: 'projects' },
-    { label: 'Skills', id: 'skills' },
-    { label: 'Experience', id: 'experience' },
-    { label: 'Contact', id: 'contact' },
+    { label: "Home", id: "home" },
+    { label: "Projects", id: "projects" },
+    { label: "Skills", id: "skills" },
+    { label: "Experience", id: "experience" },
+    { label: "Contact", id: "contact" },
   ];
 
   useEffect(() => {
@@ -38,16 +38,16 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  },);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
       setActiveSection(id);
       setIsMobileMenuOpen(false);
     }
@@ -56,17 +56,17 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md' : 'bg-white/80 backdrop-blur-sm'
+        isScrolled ? "bg-white shadow-md" : "bg-white/80 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <button
-            onClick={() => scrollToSection('home')}
+          <a
+            href="#home"
             className="text-xl sm:text-2xl font-bold text-gray-900 hover:text-gray-700 transition-colors"
           >
             Brittany Herbert
-          </button>
+          </a>
 
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
@@ -75,8 +75,8 @@ const Navbar = () => {
                 onClick={() => scrollToSection(link.id)}
                 className={`transition-colors font-medium ${
                   activeSection === link.id
-                    ? 'text-gray-900 font-semibold'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? "text-gray-900 font-semibold"
+                    : "text-gray-600 hover:text-gray-900"
                 }`}
               >
                 {link.label}
@@ -103,8 +103,8 @@ const Navbar = () => {
                 onClick={() => scrollToSection(link.id)}
                 className={`block w-full text-left transition-colors py-2 ${
                   activeSection === link.id
-                    ? 'text-gray-900 font-semibold'
-                    : 'text-gray-600 hover:text-gray-900 font-medium'
+                    ? "text-gray-900 font-semibold"
+                    : "text-gray-600 hover:text-gray-900 font-medium"
                 }`}
               >
                 {link.label}

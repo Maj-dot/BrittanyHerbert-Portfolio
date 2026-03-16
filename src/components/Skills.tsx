@@ -29,7 +29,7 @@ const Skills = () => {
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills & Technologies</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A comprehensive toolkit for building modern web applications from front to back.
+            Technologies and tools I use to design, build, and secure modern web applications, while continuously expanding my skill set and exploring new technologies.
           </p>
         </motion.div>
 
