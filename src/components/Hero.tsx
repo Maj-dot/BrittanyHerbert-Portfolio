@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { view } from "framer-motion/client";
 import { ArrowDown, Download } from "lucide-react";
 
 const Hero = () => {
@@ -24,11 +23,11 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
               Full-Stack Developer | DevOps & Security Focus
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              I build full stack web application with a focus on reliability,
+              I build full-stack web applications with a focus on reliability,
               security, and clean system design. my work centers around React,
               modern Javascript, and building software that scales and runs
               smoothly in production.
@@ -64,27 +63,27 @@ const Hero = () => {
                 <div className="w-3 h-3 bg-green-500 rounded-full mt-2 animate-pulse"></div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    Current Focus
+                    Currently Building
                   </h3>
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-gray-900 rounded-full"></span>
-                      SaaS Development
+                      Full-Stack Application Development
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-gray-900 rounded-full"></span>
-                      React & Next.js
+                      DevOps & Infrastructure Fundamentals
                     </li>
                     <li className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-gray-900 rounded-full"></span>
-                      Security Best Practices
+                      Secure Web Architecture
                     </li>
                   </ul>
                 </div>
               </div>
               <div className="border-t pt-6">
                 <p className="text-sm text-gray-600">
-                  Available for freelance projects and collaborations
+                  Open to full time opportunities and technical collaborations. Feel free to reach out!
                 </p>
               </div>
             </div>

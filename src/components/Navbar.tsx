@@ -4,22 +4,7 @@ import { Menu, X } from 'lucide-react';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsMobileMenuOpen(false);
-    }
-  };
+  const [activeSection, setActiveSection] = useState('home');
 
   const navLinks = [
     { label: 'Home', id: 'home' },
@@ -28,6 +13,45 @@ const Navbar = () => {
     { label: 'Experience', id: 'experience' },
     { label: 'Contact', id: 'contact' },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+
+      const sectionElements = navLinks
+        .map((link) => document.getElementById(link.id))
+        .filter(Boolean) as HTMLElement[];
+
+      const scrollPosition = window.scrollY + 120;
+
+      for (const section of sectionElements) {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  },);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActiveSection(id);
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   return (
     <nav
@@ -39,7 +63,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <button
             onClick={() => scrollToSection('home')}
-            className="text-xl font-bold text-gray-900 hover:text-gray-700 transition-colors"
+            className="text-xl sm:text-2xl font-bold text-gray-900 hover:text-gray-700 transition-colors"
           >
             Brittany Herbert
           </button>
@@ -49,7 +73,11 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-gray-700 hover:text-gray-900 transition-colors font-medium"
+                className={`transition-colors font-medium ${
+                  activeSection === link.id
+                    ? 'text-gray-900 font-semibold'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
               >
                 {link.label}
               </button>
@@ -59,6 +87,7 @@ const Navbar = () => {
           <button
             className="md:hidden text-gray-700"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle navigation menu"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -72,7 +101,11 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left text-gray-700 hover:text-gray-900 transition-colors font-medium py-2"
+                className={`block w-full text-left transition-colors py-2 ${
+                  activeSection === link.id
+                    ? 'text-gray-900 font-semibold'
+                    : 'text-gray-600 hover:text-gray-900 font-medium'
+                }`}
               >
                 {link.label}
               </button>
