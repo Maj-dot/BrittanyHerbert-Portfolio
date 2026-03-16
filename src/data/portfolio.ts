@@ -8,7 +8,7 @@ export const projects = [
       "Built backend API routes for event scheduling and data management",
       "Implemented MongoDB database models using Mongoose",
       "Designed full stack architecture integrating frontend views with backend services",
-      "Develop dynamic UI rendering using the EJS templatting engine"
+      "Developed dynamic UI rendering using the EJS templating engine"
     ],
     github: "https://github.com/Maj-dot/The-Vibexperience",
     demo: "https://the-vibexperience-f7b30e48c10f.herokuapp.com/"
@@ -34,7 +34,7 @@ export const projects = [
     highlights: [
       "Built backend services using Django and PostgreSQL",
       "Integrated CoinGecko API to retrieve real time cryptocurrency data",
-      "Implement watchlist functionality allowing users to track selected assets", 
+      "Implemented watchlist functionality allowing users to track selected assets", 
       "Developed dynamic search and filtering for cyptocurrency listings"
     ],
     github: "https://github.com/ian-ruiz21/CoinWatch",
@@ -46,12 +46,12 @@ export const projects = [
     description: "A responsive personal portfolio showcasing development projects, technical skills, and professional experience.",
     techStack: ["React", "Tailwind", "Tailwind CSS"],
     highlights: [
-      "Built reusuable UI components using React and Typescript",
+      "Built reusable UI components using React and Typescript",
       "Implemented responsive layouts with Tailwind CSS",
       " Designed project showcase architecture for technical portfolios"
     ],
-    github: "https://example.com",
-    demo: "https://github.com/example"
+    github: "https://github.com/Maj-dot/BrittanyHerbert-Portfolio",
+    demo: ""
   }
 ];
 
@@ -112,7 +112,7 @@ export const experience = [
     highlights: [
       "500+ hours of hands on coding experience in JavaScript, Python, React, and Django",
       "Built multiple full stack projects using modern web technologies and best practices",
-      "Worked with Git, Agile workflows, and collarborative development practices"
+      "Worked with Git, Agile workflows, and collaborative development practices"
     ]
   }
 ];
