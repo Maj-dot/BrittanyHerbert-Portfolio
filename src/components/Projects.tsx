@@ -8,49 +8,11 @@ const Projects = () => {
 
   const categories = ['All', 'Frontend', 'Full Stack', 'Backend', 'Portfolio'];
 
-  const getProjectCategories = (project: {
-    title: string;
-    techStack: string[];
-  }) => {
-    const categories: string[] = [];
-
-    const tech = project.techStack.map((item) => item.toLowerCase());
-
-    const hasFrontend =
-      tech.includes('react') ||
-      tech.includes('javascript') ||
-      tech.includes('typescript') ||
-      tech.includes('html/css') ||
-      tech.includes('tailwind') ||
-      tech.includes('tailwind css') ||
-      tech.includes('ejs');
-
-    const hasBackend =
-      tech.includes('node.js') ||
-      tech.includes('express') ||
-      tech.includes('express.js') ||
-      tech.includes('python') ||
-      tech.includes('django') ||
-      tech.includes('mongodb') ||
-      tech.includes('mongoose') ||
-      tech.includes('postgresql') ||
-      tech.includes('jwt authentication') ||
-      tech.includes('rest apis') ||
-      tech.includes('coingecko api');
-
-    if (hasFrontend) categories.push('Frontend');
-    if (hasBackend) categories.push('Backend');
-    if (hasFrontend && hasBackend) categories.push('Full Stack');
-    if (project.title === 'Developer Portfolio') categories.push('Portfolio');
-
-    return categories;
-  };
-
   const filteredProjects =
     selectedCategory === 'All'
       ? projects
       : projects.filter((project) =>
-          getProjectCategories(project).includes(selectedCategory)
+          project.category.includes(selectedCategory)
         );
 
   const container = {

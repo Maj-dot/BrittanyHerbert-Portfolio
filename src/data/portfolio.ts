@@ -11,7 +11,8 @@ export const projects = [
       "Developed dynamic UI rendering using the EJS templating engine"
     ],
     github: "https://github.com/Maj-dot/The-Vibexperience",
-    demo: "https://the-vibexperience-f7b30e48c10f.herokuapp.com/"
+    demo: "https://the-vibexperience-f7b30e48c10f.herokuapp.com/",
+    category: ["Full Stack"]
   },
   {
     id: 2,
@@ -24,7 +25,8 @@ export const projects = [
       "Designed responsive React components for data input and dashboard views"
     ],
     github: "https://github.com/Maj-dot/TruGrind",
-    demo: "https://trugrind-e387b848377b.herokuapp.com//"
+    demo: "https://trugrind-e387b848377b.herokuapp.com//",
+    category: ["Full Stack"]
   },
   {
     id: 3,
@@ -35,10 +37,12 @@ export const projects = [
       "Built backend services using Django and PostgreSQL",
       "Integrated CoinGecko API to retrieve real time cryptocurrency data",
       "Implemented watchlist functionality allowing users to track selected assets", 
-      "Developed dynamic search and filtering for cyptocurrency listings"
+      "Developed dynamic search and filtering for cryptocurrency listings",
+      "Collaborated with a team of developers using Git and Agile workflows"
     ],
     github: "https://github.com/ian-ruiz21/CoinWatch",
-    demo: "https://coinwatch-26f35a9e73f9.herokuapp.com/"
+    demo: "https://coinwatch-26f35a9e73f9.herokuapp.com/",
+    category: ["Full Stack", "Backend"]
   },
   {
     id: 4,
@@ -46,12 +50,13 @@ export const projects = [
     description: "A responsive personal portfolio showcasing development projects, technical skills, and professional experience.",
     techStack: ["React", "Tailwind", "Tailwind CSS"],
     highlights: [
-      "Built reusable UI components using React and Typescript",
+      "Built reusable UI components using React and TypeScript",
       "Implemented responsive layouts with Tailwind CSS",
       " Designed project showcase architecture for technical portfolios"
     ],
     github: "https://github.com/Maj-dot/BrittanyHerbert-Portfolio",
-    demo: ""
+    demo: "",
+    category: ["Portfolio"]
   }
 ];
 
