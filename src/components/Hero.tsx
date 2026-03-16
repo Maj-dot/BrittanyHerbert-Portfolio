@@ -1,11 +1,12 @@
-import { motion } from 'framer-motion';
-import { ArrowDown, Download } from 'lucide-react';
+import { motion } from "framer-motion";
+import { view } from "framer-motion/client";
+import { ArrowDown, Download } from "lucide-react";
 
 const Hero = () => {
   const scrollToProjects = () => {
-    const element = document.getElementById('projects');
+    const element = document.getElementById("projects");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -24,11 +25,13 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
-              Full-Stack Developer & Creative Technologist
+              Full-Stack Developer | DevOps & Security Focus
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Building elegant, secure, and scalable web applications.
-              Specializing in React, modern JavaScript, and thoughtful user experiences.
+              I build full stack web application with a focus on reliability,
+              security, and clean system design. my work centers around React,
+              modern Javascript, and building software that scales and runs
+              smoothly in production.
             </p>
             <div className="flex flex-wrap gap-4">
               <button
@@ -39,11 +42,12 @@ const Hero = () => {
                 <ArrowDown size={20} />
               </button>
               <a
-                href="/resume.pdf"
-                download
-                className="px-8 py-4 border-2 border-gray-900 text-gray-900 rounded-lg hover:bg-gray-900 hover:text-white transition-colors font-medium flex items-center gap-2"
+                href="/Brittany-Herbert-ITSupportResume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium flex items-center gap-2"
               >
-                Download Resume
+                View Resume
                 <Download size={20} />
               </a>
             </div>
