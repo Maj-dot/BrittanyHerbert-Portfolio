@@ -12,7 +12,7 @@ export const projects = [
     ],
     github: "https://github.com/Maj-dot/The-Vibexperience",
     demo: "https://the-vibexperience-f7b30e48c10f.herokuapp.com/",
-    category: ["Full Stack"]
+    category: ['Full Stack']
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ export const projects = [
     ],
     github: "https://github.com/Maj-dot/TruGrind",
     demo: "https://trugrind-e387b848377b.herokuapp.com//",
-    category: ["Full Stack"]
+    category: ['Full Stack']
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ export const projects = [
     ],
     github: "https://github.com/ian-ruiz21/CoinWatch",
     demo: "https://coinwatch-26f35a9e73f9.herokuapp.com/",
-    category: ["Full Stack", "Backend"]
+    category: ['Full Stack', 'Backend']
   },
   {
     id: 4,
@@ -56,7 +56,7 @@ export const projects = [
     ],
     github: "https://github.com/Maj-dot/BrittanyHerbert-Portfolio",
     demo: "",
-    category: ["Portfolio"]
+    category: ['Portfolio']
   }
 ];
 
